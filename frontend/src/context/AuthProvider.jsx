@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
-  const API_BASE_URL = 'http://localhost:5000/auth'; // Adjust base URL as needed
+  const API_BASE_URL = 'https://jobportalkiot.onrender.com/auth'; // Production backend
   useEffect(() => {
     const checkAuth = async () => {
       try {

@@ -20,7 +20,7 @@ const ApplicationspecificTable = () => {
                 }
 
                 const config = { headers: { Authorization: `Bearer ${token}` } };
-                const response = await axios.get(`http://localhost:5000/applications/job/${jobId}`, config);
+                const response = await axios.get(`https://jobportalkiot.onrender.com/applications/job/${jobId}`, config);
 
                 setApplications(response.data);
                 setJobTitle(response.data[0]?.jobId?.title || "Job Applications");
@@ -43,7 +43,7 @@ const ApplicationspecificTable = () => {
 
             const config = { headers: { Authorization: `Bearer ${token}` } };
             const response = await axios.patch(
-                `http://localhost:5000/applications/${applicationId}`,
+                `https://jobportalkiot.onrender.com/applications/${applicationId}`,
                 { status },
                 config
             );
@@ -81,7 +81,7 @@ const ApplicationspecificTable = () => {
             if (!confirmDelete) return;
     
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            await axios.delete(`http://localhost:5000/applications/${applicationId}`, config);
+            await axios.delete(`https://jobportalkiot.onrender.com/applications/${applicationId}`, config);
     
             setApplications((prevApplications) =>
                 prevApplications.filter((app) => app._id !== applicationId)

@@ -17,7 +17,7 @@ const JobList = () => {
     const fetchJobs = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:5000/jobs", {
+  const response = await axios.get("https://jobportalkiot.onrender.com/jobs", {
           params: { search, department },
         });
         setJobs(response.data);
@@ -34,7 +34,7 @@ const JobList = () => {
         if (!token) return;
 
         const config = { headers: { Authorization: `Bearer ${token}` } };
-        const response = await axios.get("http://localhost:5000/applications/user", config);
+  const response = await axios.get("https://jobportalkiot.onrender.com/applications/user", config);
         setAppliedJobs(response.data.map((app) => app.jobId));
       } catch (err) {
         console.error("Error fetching applied jobs", err);

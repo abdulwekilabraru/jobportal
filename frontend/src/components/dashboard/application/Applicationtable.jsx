@@ -19,7 +19,7 @@ const ApplicationTable = () => {
         }
 
         try {
-            const response = await axios.get('http://localhost:5000/applications', {
+            const response = await axios.get('https://jobportalkiot.onrender.com/applications', {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setApplications(response.data);
@@ -38,7 +38,7 @@ const ApplicationTable = () => {
         }
 
         try {
-            await axios.delete(`http://localhost:5000/applications/${id}`, {
+            await axios.delete(`https://jobportalkiot.onrender.com/applications/${id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setApplications(applications.filter(app => app._id !== id)); // Update UI after deletion

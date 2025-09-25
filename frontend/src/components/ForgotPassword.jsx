@@ -8,7 +8,7 @@ const ForgotPassword = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/auth/forgot-password', { email });
+            const response = await axios.post('https://jobportalkiot.onrender.com/auth/forgot-password', { email });
             setMessage(response.data.message);
         } catch (err) {
             setMessage(err.response?.data?.message || 'Error sending reset email');

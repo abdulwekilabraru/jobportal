@@ -10,7 +10,7 @@ const Announcement = () => {
   useEffect(() => {
     const fetchApplicationStatus = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/applications/user/status", {
+        const response = await axios.get("https://jobportalkiot.onrender.com/applications/user/status", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
 

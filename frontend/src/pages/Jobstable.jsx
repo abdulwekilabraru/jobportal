@@ -17,7 +17,7 @@ function Jobstable() {
           alert("You are not allowed to do!");
           return;
         }
-        const response = await axios.get("http://localhost:5000/jobs/dashboard", {
+  const response = await axios.get("https://jobportalkiot.onrender.com/jobs/dashboard", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setJobs(response.data);
@@ -37,7 +37,7 @@ function Jobstable() {
         return;
       }
 
-      await axios.delete(`http://localhost:5000/jobs/${jobId}`, {
+  await axios.delete(`https://jobportalkiot.onrender.com/jobs/${jobId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

@@ -20,7 +20,7 @@ const ViewApplication = () => {
                 }
 
                 const config = { headers: { Authorization: `Bearer ${token}` } };
-                const response = await axios.get(`http://localhost:5000/applications/${id}`, config);
+                const response = await axios.get(`https://jobportalkiot.onrender.com/applications/${id}`, config);
 
                 setApplication(response.data);
             } catch (error) {
@@ -58,7 +58,7 @@ const ViewApplication = () => {
                     <p><strong className="text-gray-900">Uploaded CV:</strong> 
                         {application.cvImage ? (
                       <a
-                      href={`http://localhost:5000/applications/download-cv/${application.cvImage.replace(/\\/g, '/').split('/').pop()}`}
+                      href={`https://jobportalkiot.onrender.com/applications/download-cv/${application.cvImage.replace(/\\/g, '/').split('/').pop()}`}
                       download
                       className="text-blue-600 hover:underline ml-2"
                   >

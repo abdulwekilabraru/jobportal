@@ -39,7 +39,7 @@ const AddJob = () => {
                 return;
             }
 
-            const response = await axios.post("http://localhost:5000/jobs", formData, {
+            const response = await axios.post("https://jobportalkiot.onrender.com/jobs", formData, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 console.log(response)

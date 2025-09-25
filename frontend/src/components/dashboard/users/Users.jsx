@@ -28,7 +28,7 @@ const Users = () => {
                 return;
             }
 
-            const response = await axios.get(`http://localhost:5000/users${role ? `?role=${role}` : ''}`, {
+            const response = await axios.get(`https://jobportalkiot.onrender.com/users${role ? `?role=${role}` : ''}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUsers(response.data);
@@ -46,7 +46,7 @@ const Users = () => {
                 return;
             }
 
-            await axios.delete(`http://localhost:5000/users/${id}`, {
+            await axios.delete(`https://jobportalkiot.onrender.com/users/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 
@@ -78,7 +78,7 @@ const Users = () => {
             }
 
             if (editingUser) {
-                await axios.put(`http://localhost:5000/users/${editingUser._id}`, formData, {
+                await axios.put(`https://jobportalkiot.onrender.com/users/${editingUser._id}`, formData, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
             } else {
@@ -86,7 +86,7 @@ const Users = () => {
                     alert("Password is required!");
                     return;
                 }
-                await axios.post("http://localhost:5000/users", formData, {
+                await axios.post("https://jobportalkiot.onrender.com/users", formData, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
             }

@@ -25,7 +25,7 @@ const EditJob = () => {
     useEffect(() => {
         const fetchJob = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/jobs/${jobId}`);
+                const response = await axios.get(`https://jobportalkiot.onrender.com/jobs/${jobId}`);
                 setFormData(response.data);
             } catch (error) {
                 console.error("Error fetching job:", error);
@@ -56,7 +56,7 @@ const EditJob = () => {
                 return;
             }
 
-            const response = await axios.patch(`http://localhost:5000/jobs/${jobId}`, formData, {
+            const response = await axios.patch(`https://jobportalkiot.onrender.com/jobs/${jobId}`, formData, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 console.log(response)

@@ -17,7 +17,7 @@ const Apply = () => {
   useEffect(() => {
     const fetchJobDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/jobs/${jobId}`);
+  const response = await axios.get(`https://jobportalkiot.onrender.com/jobs/${jobId}`);
         setJob(response.data);
       } catch (err) {
         setError(err.message);
@@ -56,7 +56,7 @@ const Apply = () => {
       };
   
       const response = await axios.post(
-        "http://localhost:5000/applications",
+  "https://jobportalkiot.onrender.com/applications",
         formData,
         config
       );

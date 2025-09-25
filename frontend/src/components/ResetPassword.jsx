@@ -10,7 +10,7 @@ const ResetPassword = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`http://localhost:5000/auth/reset-password/${token}`, { password });
+            const response = await axios.post(`https://jobportalkiot.onrender.com/auth/reset-password/${token}`, { password });
             setMessage(response.data.message);
         } catch (err) {
             setMessage(err.response?.data?.message || 'Error resetting password');

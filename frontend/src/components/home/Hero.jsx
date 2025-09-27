@@ -1,7 +1,7 @@
 import JobPortalAbout from "../JobPortalAbout"
-import CardHoverEffectDemo from "../templates/CardHoverEffectDemo"
-import { HeroParallaxDemo } from "../templates/HeroParallaxDemo"
-import Infinity from "../templates/Infinity"
+// import CardHoverEffectDemo from "../templates/CardHoverEffectDemo"
+// import { HeroParallaxDemo } from "../templates/HeroParallaxDemo"
+import InfinitySection from "../templates/Infinity"
 import SmoothScroll from "../templates/SmoothScroll"
 import SparkleDemo from "../templates/SparkleDemo"
 import Timeline from "../templates/Timeline"
@@ -14,7 +14,8 @@ function Hero() {
     
     <div>
 <SparkleDemo/>
-<Infinity/>
+<InfinitySection/>
+<SmoothScroll/>
 <Timeline/>
 <JobPortalAbout/>
 {/* <CardHoverEffectDemo/> */}

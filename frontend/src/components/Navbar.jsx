@@ -1,8 +1,23 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import KIOT from "../assets/KIOT.JPG";
-import WolloLogo from "../assets/About.png"; // Import Wollo University logo
-import { IoIosNotifications } from "react-icons/io";
+// Using Ionicons v5 variant; previous IoIosNotifications (Ionicons v4) caused resolution error with react-icons v5
+// Inline bell icon (removed react-icons import due to resolution issues in build env)
+const BellIcon = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={props.className || "w-8 h-8"}
+  >
+    <path d="M12 22a2 2 0 0 0 2-2H10a2 2 0 0 0 2 2Z" />
+    <path d="M18 16v-5a6 6 0 1 0-12 0v5l-2 2h16l-2-2Z" />
+  </svg>
+);
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -39,6 +54,18 @@ const Navbar = () => {
 
   return (
     <div>
+      {/* Marquee animation style (scoped) */}
+      <style>{`
+        @keyframes marqueeScroll {
+          0% { transform: translateX(100%); }
+          100% { transform: translateX(-100%); }
+        }
+        .animate-marquee { 
+          display: inline-block; 
+          white-space: nowrap; 
+          animation: marqueeScroll 18s linear infinite; 
+        }
+      `}</style>
       {/* Header Section with Marquee and Wollo University Logo */}
       <header className="bg-blue-900 text-white p-2 flex items-center justify-center">
         <img
@@ -46,11 +73,12 @@ const Navbar = () => {
           alt="Wollo University Logo"
           className="h-12 rounded-full mr-4"
         />
-        <marquee behavior="scroll" direction="left" className="text-lg font-bold">
-          Wollo University Kombolcha Institute of Technology (KIOT JOBS PORTAL)
-        </marquee>
+        <div className="overflow-hidden whitespace-nowrap w-full">
+          <div className="animate-marquee text-lg font-bold inline-block">
+            Wollo University Kombolcha Institute of Technology (KIOT JOBS PORTAL)
+          </div>
+        </div>
       </header>
-
       {/* Existing Navbar */}
       <nav className="bg-white shadow-lg w-full border-b md:border-0 md:static">
         <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
@@ -207,8 +235,8 @@ const Navbar = () => {
               user?.role === "job_seeker" ? (
                 <div className="flex">
                   <div className="text-blue-700 px-6 text-4xl">
-                    <a href="/anouncement">
-                      <IoIosNotifications />
+                    <a href="/anouncement" aria-label="Notifications">
+                      <BellIcon className="w-8 h-8" />
                     </a>
                   </div>
                   <button

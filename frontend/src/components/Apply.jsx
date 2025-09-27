@@ -55,7 +55,7 @@ const Apply = () => {
         },
       };
   
-      const response = await axios.post(
+      await axios.post(
   "https://jobportalkiot.onrender.com/applications",
         formData,
         config
@@ -165,7 +165,7 @@ const Apply = () => {
   >
     <option value="">Select Qualification</option>
     <option value="Degree">Degree</option>
-    <option value="Masters">Master's</option>
+    <option value="Masters">Master&#39;s</option>
     <option value="PhD">PhD</option>
   </select>
 </div>

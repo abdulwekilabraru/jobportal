@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/AuthContext";
 // import { AuthContext } from "@/context/AuthContext";
 const AddJob = () => {
 
-      const { isAuthenticated, user, logout } = useContext(AuthContext); // Assuming user object contains role
+      const { isAuthenticated, user } = useContext(AuthContext); // Assuming user object contains role
 
     const [formData, setFormData] = useState({
         title: "",

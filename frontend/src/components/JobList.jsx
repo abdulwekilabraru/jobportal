@@ -10,7 +10,7 @@ const JobList = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [department, setDepartment] = useState("");
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {

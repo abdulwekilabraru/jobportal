@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import DashboardLayout from "../../../layouts/DashboardLayout";
 
@@ -16,26 +16,28 @@ const Users = () => {
         department: "",
     });
 
-    useEffect(() => {
-        fetchUsers();
-    }, [role]);
-
-    const fetchUsers = async () => {
+    // Fetch users (memoized so useEffect & handlers can depend on it safely)
+    const fetchUsers = useCallback(async () => {
         try {
             const token = localStorage.getItem("token");
             if (!token) {
                 setError("Unauthorized! Please log in.");
                 return;
             }
-
-            const response = await axios.get(`https://jobportalkiot.onrender.com/users${role ? `?role=${role}` : ''}`, {
+            const query = role ? `?role=${role}` : "";
+            const response = await axios.get(`https://jobportalkiot.onrender.com/users${query}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUsers(response.data);
-        } catch (error) {
-            setError(error.response?.data?.error || "Error fetching users.");
+            setError("");
+        } catch (err) {
+            setError(err.response?.data?.error || "Error fetching users.");
         }
-    };
+    }, [role]);
+
+    useEffect(() => {
+        fetchUsers();
+    }, [fetchUsers]);
 
     const handleDelete = async (id) => {
         if (!window.confirm("Are you sure you want to delete this user?")) return;
